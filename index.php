@@ -10,6 +10,7 @@ error_reporting(E_ALL);
 
 // Require autoload file
 require_once('vendor/autoload.php');
+require('classes/pet.php');
 
 // Create an instance of the Base class
 $f3 = Base::instance();
@@ -19,7 +20,10 @@ $f3->set('DEBUG', 3);
 
 
 // Define a default route
-$f3->route('GET /', function(){
+$f3->route('GET /', function($f3){
+    // Instantiate the Pet class
+    $pet1 = new Pet();
+    $f3->set('pet1', $pet1);
 
    // Display view
     $template = new Template();
